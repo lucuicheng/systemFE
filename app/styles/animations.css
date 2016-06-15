@@ -1,0 +1,107 @@
+.view-page.ng-enter {
+	 transform: translateY(-100%);
+	 -webkit-transform: translateY(-100%);
+	 -moz-transform: translateY(-100%);
+	 -o-transform: translateY(-100%);
+
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.view-page.ng-enter.ng-enter-active {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-o-transform: translateY(0);
+}
+.view-page.ng-leave {
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.view-page.ng-leave.ng-leave-active {
+	transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-o-transform: translateY(100%);
+}
+/*-------------------------------------*/
+.resume-page-down.ng-enter {
+	transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	/*opacity: 0;*/
+
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.resume-page-down.ng-enter.ng-enter-active {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-o-transform: translateY(0);
+	/*opacity: 1;*/
+}
+.resume-page-down.ng-leave {
+	transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	/*opacity: 1;*/
+
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.resume-page-down.ng-leave.ng-leave-active {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-o-transform: translateY(0);
+	/*opacity: 0;*/
+}
+
+.resume-page-up.ng-enter {
+	transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-o-transform: translateY(100%);
+	/*opacity: 0;*/
+
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.resume-page-up.ng-enter.ng-enter-active {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-o-transform: translateY(0);
+	/*opacity: 1;*/
+}
+.resume-page-up.ng-leave {
+	transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	/*opacity: 1;*/
+
+	transition: all 1000ms linear 0s;
+	-moz-transition: all 1000ms linear 0s;
+	-webkit-transition: all 1000ms linear 0s;
+	-o-transition: all 1000ms linear 0s;
+}
+.resume-page-up.ng-leave.ng-leave-active {
+	transform: translateY(-200%);
+	-webkit-transform: translateY(-200%);
+	-moz-transform: translateY(-200%);
+	-o-transform: translateY(-200%);
+	/*opacity: 0;*/
+}

@@ -1,0 +1,11 @@
+<div class="row side-content side-top">
+    <div ng-bind-html="topContent"></div>
+</div>
+<div class="row side-content side-left" ng-class="{'show-left shadow': showLeft}">
+    <div class="fa fa-bars text-center" ng-click="showLeftSide()"></div>
+    <div ng-bind-html="leftContent"></div>
+</div>
+<div class="row side-content side-right" ng-class="{'show-right shadow': showRight}">
+    <div class="fa fa-user text-center" ng-click="showRightSide()"></div>
+    <div ng-bind-html="rightContent"></div>
+</div>

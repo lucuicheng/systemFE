@@ -1,0 +1,4 @@
+<div class="row side-content side-center" ng-click="resetSide()">
+    <div ng-if="type != 'url'" class="" ng-class="{'side-blur-2': blur}" ng-bind-html="content"></div>
+    <div ng-if="type == 'url'" class="" ng-class="{'side-blur-2': blur}" ng-include="contentUrl"></div>
+</div>

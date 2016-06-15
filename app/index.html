@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>app</title>
+    <meta name="description" content="">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <!-- custom:css -->
+<link rel="stylesheet" href="styles/animations.css" />
+<link rel="stylesheet" href="styles/main.css" />
+    <!--endcustom -->
+    <!-- endbuild -->
+</head>
+<body ng-app="webApp" ng-controller="applicationController">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!--<div ng-if="loading">
+    这里是进度条
+</div>-->
+
+<!-- 内容区域 -->
+<!--  need auth-info, class + animate effect -->
+<div class="main" ui-view="" auth-info>
+</div>
+
+<!-- 跳转顶部、手机浏览 -->
+<div>
+    <div class="jump-top" title="跳转顶部">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+    </div>
+    <div class="to-phone" title="移动端访问">
+        <span class="glyphicon glyphicon-qrcode"></span>
+    </div>
+    <!--<div class="qr-code">
+        <img src="images/QRCode.png" class="img-responsive" alt="">
+    </div>-->
+</div>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+<script src="bower_components/ng-clip/src/ngClip.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- custom:js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/common/jsAddress.js"></script>
+<script src="scripts/common/main.js"></script>
+<script src="scripts/controllers/controller.js"></script>
+<script src="scripts/directives/directive.js"></script>
+<script src="scripts/filters/filter.js"></script>
+<script src="scripts/interceptor/interceptor.js"></script>
+<script src="scripts/routes/route.js"></script>
+<script src="scripts/services/authService.js"></script>
+<script src="scripts/services/service.js"></script>
+<script src="scripts/services/teacherService.js"></script>
+<script src="modules/api/controller.js"></script>
+<script src="modules/api/route.js"></script>
+<script src="modules/api/service.js"></script>
+<script src="modules/blank/controller.js"></script>
+<script src="modules/blank/route.js"></script>
+<script src="modules/blank/service.js"></script>
+<script src="modules/blog/controller.js"></script>
+<script src="modules/blog/route.js"></script>
+<script src="modules/blog/service.js"></script>
+<script src="modules/demo/controller.js"></script>
+<script src="modules/demo/route.js"></script>
+<script src="modules/demo/service.js"></script>
+<script src="modules/index/controller.js"></script>
+<script src="modules/index/route.js"></script>
+<script src="modules/index/service.js"></script>
+<script src="modules/project/controller.js"></script>
+<script src="modules/project/route.js"></script>
+<script src="modules/project/service.js"></script>
+<script src="modules/resume/controller.js"></script>
+<script src="modules/resume/route.js"></script>
+<script src="modules/resume/service.js"></script>
+<script src="modules/tools/controller.js"></script>
+<script src="modules/tools/route.js"></script>
+<script src="modules/tools/service.js"></script>
+<!--endcustom -->
+<!-- endbuild -->
+</body>
+</html>

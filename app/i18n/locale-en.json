@@ -1,0 +1,11 @@
+{
+  "LANGUAGE":"Lang",
+  "ENGLISH":"English",
+  "SIMPLIFIED CHINESE":"Chinese(Simplified)",
+
+  "SEARCH":"Search",
+  "SEARCH_BUTTON":"Go!",
+  "TAGS":"Tags",
+
+  "DEMO_ERROR": "There is no corresponding Demo for presentation!"
+}

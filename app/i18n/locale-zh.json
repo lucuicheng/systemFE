@@ -1,0 +1,11 @@
+{
+  "LANGUAGE":"语言",
+  "ENGLISH":"英语",
+  "SIMPLIFIED CHINESE":"汉语（简体）",
+
+  "SEARCH":"搜索",
+  "SEARCH_BUTTON":"查找",
+  "TAGS":"标签",
+
+  "DEMO_ERROR": "没有对应的Demo供演示！"
+}
