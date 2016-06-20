@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -39,20 +39,14 @@
 
 <!-- 内容区域 -->
 <!--  need auth-info, class + animate effect -->
-<div class="main" ui-view="" auth-info>
-</div>
+<side-content top-content="title"></side-content>
+<center-content class="view-page" ng-class="{'full':!active, 'side-blur-2': blur}" ui-view="" ng-click="resetSide()" auth-info></center-content>
 
 <!-- 跳转顶部、手机浏览 -->
 <div>
     <div class="jump-top" title="跳转顶部">
         <span class="glyphicon glyphicon-arrow-up"></span>
     </div>
-    <div class="to-phone" title="移动端访问">
-        <span class="glyphicon glyphicon-qrcode"></span>
-    </div>
-    <!--<div class="qr-code">
-        <img src="images/QRCode.png" class="img-responsive" alt="">
-    </div>-->
 </div>
 
 <!-- build:js(.) scripts/vendor.js -->

@@ -146,6 +146,46 @@ appService.factory('commonService',
     }
 );
 
+/**
+ * 获取系统信息的服务
+ */
+appService.factory('systemService', function ($http, commonService) {
+
+    var service = { // our factory definition
+
+        queryMenu: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/system/menu.json';
+            return $http.get(url, params);
+        },
+
+        queryUser: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/user/detail.json';
+            return $http.get(url, params);
+        },
+
+        queryConfig: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/audio/workset/detail';
+            return $http.post(url, params);
+        },
+
+        queryDetailSyncBy: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/audio/workset/detail';
+            return commonService.handleSyncData(url, params);
+        },
+
+        save: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/audio/workset/save';
+            return $http.post(url, params);
+        },
+
+        saveSync: function (params) {
+            var url = commonService.getBaseParams().url + 'datas/audio/workset/save';
+            return commonService.handleSyncData(url, params);
+        }
+    };
+    return service;
+
+});
 
 /**
  * angularjs自身的缓存，刷新后即会清空

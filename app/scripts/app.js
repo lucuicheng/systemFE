@@ -60,7 +60,6 @@ webApp.run(
         $rootScope.$on('$stateChangeStart',
             function (event, toState, toParams, fromState, fromParams) {
 
-
                 /*//用户认证及访问权限控制 TODO 设置方法
                 if(!authService.isAuthenticated() ) {//没有用户登录
                     console.log(' user is not logged in');

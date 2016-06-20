@@ -650,15 +650,98 @@ appDirective.directive("owlCarousel", ["$timeout", function (timer) {
 }]);
 
 /**
+ * 菜单指令
+ */
+appDirective.directive('menu', ['$rootScope', '$timeout', 'systemService', function ($rootScope, $timeout, systemService) {
+    return {
+        restrict: "EA",
+        controller: function($scope, $element){
+            var params = null;
+
+            systemService.queryMenu(params)
+            .success(function (data, status, headers, config) {
+                $scope.menuDataSrc = data;
+                var menuLoaded = true;
+                $timeout(function() {//加载完成后，延迟300ms显示
+                    $rootScope.$broadcast('menuLoaded', menuLoaded);
+                }, 300)
+            })
+            .error(function (data, status, headers, config) {
+
+            });
+        },
+        templateUrl: 'modules/common/views/menu.html',
+        link: function ($scope, elem, attr) {
+            $scope.height = $('body').height() - 48;//这里要改成可配置
+            $scope.width = $(elem).find('.menu-content > div > ul').width() + 10;
+            $scope.show = false;
+            $scope.menuId = null;
+
+            //显示次级菜单
+            $scope.showSubMenu = function(menuId) {
+                if(menuId != $scope.menuId) {
+                    $scope.show = true;
+                } else {
+                    $scope.show = !$scope.show;
+                }
+                $scope.menuId = menuId;
+            }
+        }
+    };
+}]);
+
+/**
+ * 用户信息指令
+ */
+appDirective.directive('user', ['$rootScope','$timeout', 'systemService', function ($rootScope, $timeout, systemService) {
+    return {
+        restrict: "EA",
+        controller: function($scope, $element){
+            var params = null;
+            systemService.queryUser(params)
+            .success(function (data, status, headers, config) {
+                $scope.userDataSrc = data;
+                var userLoaded = true;
+                $timeout(function() {//加载完成后，延迟300ms显示
+                    $rootScope.$broadcast('userLoaded', userLoaded);
+                }, 2000);
+            })
+            .error(function (data, status, headers, config) {
+
+            });
+
+        },
+        templateUrl: 'modules/common/views/user.html',
+        link: function ($scope, elem, attr) {
+            $scope.height = $('body').height() - 48;//这里要改成可配置
+            $scope.areaHeight = ($('body').height() - 180 - 65- 30 * 4) / 2 ;//这里要改成可配置
+            $scope.width = $(elem).find('.menu-content > div > ul').width() + 10;
+            $scope.show = false;
+            $scope.menuId = null;
+
+            //显示次级菜单
+            $scope.showSubConfigMenu = function(menuId) {
+                if(menuId != $scope.menuId) {
+                    $scope.show = true;
+                } else {
+                    $scope.show = !$scope.show;
+                }
+                $scope.menuId = menuId;
+            }
+        }
+    };
+}]);
+
+/**
  * 侧边内容，相对之前一个标准的指令插件
  */
 appDirective.directive('sideContent', ['$rootScope', function ($rootScope) {
     return {
         restrict: "EA",
         controller: function($scope, $element){
-            $scope.topContent = '测试侧边栏'
-            $scope.leftContent = "上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。"
-            $scope.rightContent = "上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。";
+            $scope.topContent = 'Side Frame Test'
+            // $scope.leftContent = '菜单内容'
+            // $scope.rightContent = '用户信息及设置';
         },
         scope: {
             topContent:'=',
@@ -673,32 +756,59 @@ appDirective.directive('sideContent', ['$rootScope', function ($rootScope) {
 
             $scope.showLeft = false;
             $scope.showRight = false;
+            $scope.active = false;
 
-            var changeContent = function (status) {
+            var changeContent = function (status, type, flag) {
                 var change = {};
-                if(status) {
-                    change.scroll = true;
-                    change.blur = true;
+                if(type) {
+                    change.active = status;
                 } else {
-                    change.scroll = false;
-                    change.blur = false;
+                    if(status) {
+                        change.blur = flag;
+                        change.active = true;
+                    } else {
+                        change.blur = false;
+                        change.active = false;
+                    }
                 }
                 $rootScope.$broadcast('changeContent', change);
             }
 
             $scope.showLeftSide = function() {
                 $scope.showLeft = !$scope.showLeft;
-                changeContent($scope.showLeft || $scope.showRight);
+                $scope.active = !$scope.active;
+                //只在手机上开启
+                /*if($scope.showRight) {
+                    $scope.showRight = !$scope.showRight;
+                }*/
+                changeContent($scope.showLeft, true);
             };
 
             $scope.showRightSide = function() {
                 $scope.showRight = !$scope.showRight;
-                changeContent($scope.showLeft || $scope.showRight);
+                //只在手机上开启
+                /*if(!$scope.showLeft) {
+                    $scope.showLeft = !$scope.showLeft;
+                }*/
+                changeContent($scope.showLeft, false, $scope.showRight);
             };
 
+            //获取中间区域点击的广播事件
             $scope.$on('resetSide', function (event, reset) {
-                $scope.showLeft = reset.showLeft;
+                //$scope.showLeft = reset.showLeft;
                 $scope.showRight = reset.showRight;
+            });
+
+            //获取菜单加载完成的广播事件
+            $scope.$on('menuLoaded', function (event, menuLoaded) {
+                //$scope.showLeft = reset.showLeft;
+                $scope.menuLoaded = menuLoaded;
+            });
+
+            //获取用户信息加载完成的广播事件
+            $scope.$on('userLoaded', function (event, userLoaded) {
+                //$scope.showLeft = reset.showLeft;
+                $scope.userLoaded = userLoaded;
             });
         }
     };
@@ -711,28 +821,22 @@ appDirective.directive('centerContent', ['$rootScope', function ($rootScope) {
     return {
         restrict: "EA",
         controller: function($scope, $element){
-            $scope.content = "上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。上面三行语句都可以正确执行，因为首先它们都是赋值语句，而不是声明语句；其次它们的圆括号都不属于模式的一部分。第一行语句中，模式是取数组的第一个成员，跟圆括号无关；第二行语句中，模式是p，而不是d；第三行语句与第一行语句的性质一致。";
+            //$scope.content = "";
         },
-        scope: {
-            content:'=',
-            contentUrl:'@',
-            type:'@'
-        },
-        templateUrl: 'modules/common/views/content.html',
         link: function ($scope, elem, attr) {
 
             $scope.resetSide = function () {
-                $scope.scroll = false;
+                //$scope.active = false;
                 $scope.blur = false;
 
                 var reset = {};
-                reset.showLeft = false;
+                //reset.showLeft = false;
                 reset.showRight = false;
                 $rootScope.$broadcast('resetSide', reset);
             }
 
             $scope.$on('changeContent', function (event, change) {
-                $scope.scroll = change.scroll;
+                $scope.active = change.active;
                 $scope.blur = change.blur;
             });
 

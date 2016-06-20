@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center"
+         style="height: 48px;background-color: #424750;font-size: 20px;padding: 10px 0px;">
+        SystemFE
+    </div>
+</div>
+
+<div style="height: 48px;position: absolute;z-index: 222;width: 16px;top:0px;right: 0px;background-color: #397eff"></div>
+<div style="height: {{height}}px;position: absolute;z-index: 222;width: 16px;right: 0px;background-color: #E5E9EC"></div>
+<!---->
+<div class="row menu-content" style="height: {{height}}px;overflow-y: auto;overflow-x: hidden;position: relative;">
+    <div>
+        <ul class="list-group menu">
+            <li ng-repeat="menu in menuDataSrc" class="list-group-item no-border no-bg-color">
+
+                <a ng-if="menu.url == null" class="menu-item" ng-click="showSubMenu(menu.id)" ng-mousedown="">{{menu.name | translate}}
+                    <span class="glyphicon" ng-class="{'glyphicon-menu-right':!(show && menuId == menu.id), 'glyphicon-menu-down': (show && menuId == menu.id)}"></span>
+                </a>
+                <a ng-if="menu.url != null" class="menu-item" href="{{menu.url}}">{{menu.name | translate}}</a>
+
+                <ul ng-if="menu.subMenus.length > 0" class="list-group sub-menu" ng-class="{'show':(show && menuId == menu.id)}">
+                    <li class="list-group-item no-border no-bg-color" ng-repeat="submenu in menu.subMenus">
+                        <a class="sub-menu-item" href="{{submenu.url}}">{{submenu.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

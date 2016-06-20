@@ -1,11 +1,45 @@
-<div class="row side-content side-top">
-    <div ng-bind-html="topContent"></div>
+<div class="row side-content side-top" ng-class="{'full':!active}">
+    <!--<div class="float-left" ng-bind-html="topContent"></div>-->
+    <div class="float-left" style="padding: 10px 12px;">
+        <div class="input-group" style="width: 135px;font-size: 17px;">
+            <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <a class="btn btn-default border-radius-side" type="button"
+                       style="height: 28px;padding: 4px 13px;border-left: 0px;">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </span>
+        </div>
+    </div>
+    <div class="float-right">
+        <div class="" style="width: 48px;"></div>
+    </div>
+    <div class="float-right">
+        <div class="fa fa-expand" style="width: 48px;font-size: 17px;">
+        </div>
+    </div>
+    <div class="float-right">
+        <div class="fa fa-bell" style="width: 48px;font-size: 17px;">
+        </div>
+    </div>
+    <div class="float-right">
+        <div class="fa fa-envelope" style="width: 48px;font-size: 17px;">
+        </div>
+    </div>
 </div>
-<div class="row side-content side-left" ng-class="{'show-left shadow': showLeft}">
-    <div class="fa fa-bars text-center" ng-click="showLeftSide()"></div>
-    <div ng-bind-html="leftContent"></div>
+<div class="row side-content side-bottom" ng-class="{'full':!active}">
+    <div class="fa fa-dedent text-center" ng-click="showLeftSide()"></div>
 </div>
-<div class="row side-content side-right" ng-class="{'show-right shadow': showRight}">
-    <div class="fa fa-user text-center" ng-click="showRightSide()"></div>
-    <div ng-bind-html="rightContent"></div>
+<div class="row side-content side-left" ng-class="{'show-left': !showLeft}">
+    <div class="fa fa-dedent text-center" ng-click="showLeftSide()"></div>
+    <div menu="" class="transparency" ng-class="{'opacity':menuLoaded}" style="position: relative"></div>
+</div>
+<div class="row side-content side-right" ng-class="{'show-right': showRight}">
+    <div class="fa fa-user text-right" ng-click="showRightSide()">
+        <div class="float-left" style="font-size: 17px;line-height: 24px;">
+            <span>sadsasa</span>
+            <span class="glyphicon glyphicon-triangle-right" style="font-size: 10px"></span>
+        </div>
+    </div>
+    <div user="" class="transparency" ng-class="{'opacity':userLoaded}"></div>
 </div>
